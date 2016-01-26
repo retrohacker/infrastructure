@@ -1,0 +1,3 @@
+[submodule "dockeri.co"]
+	path = dockeri.co
+	url = https://github.com/wblankenship/dockeri.co

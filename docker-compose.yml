@@ -1,0 +1,15 @@
+dockerico:
+  build: ./dockeri.co
+  container_name: dockerico
+  net: "wblankenship"
+nginx:
+  image: nginx
+  container_name: nginx
+  net: "wblankenship"
+  volumes:
+    - ./nginx/dockerico.conf:/etc/nginx/conf.d/dockerico.conf:ro
+    - ./logs:/var/log/nginx
+  volumes_from:
+    - dockerico
+  ports:
+    - 80:80
