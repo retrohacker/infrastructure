@@ -1,3 +1,6 @@
 [submodule "dockeri.co"]
 	path = dockeri.co
 	url = https://github.com/wblankenship/dockeri.co
+[submodule "nginx/wblankenship"]
+	path = nginx/wblankenship
+	url = git@github.com:retrohacker/retrohacker.github.io

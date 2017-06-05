@@ -1,15 +1,26 @@
-dockerico:
-  build: ./dockeri.co
-  container_name: dockerico
-  net: "wblankenship"
-nginx:
-  image: nginx
-  container_name: nginx
-  net: "wblankenship"
-  volumes:
-    - ./nginx/dockerico.conf:/etc/nginx/conf.d/dockerico.conf:ro
-    - ./logs:/var/log/nginx
-  volumes_from:
-    - dockerico
-  ports:
-    - 80:80
+version: "2"
+services:
+  dockerico:
+    build: ./dockeri.co
+    container_name: dockerico
+    networks:
+      - wblankenship
+    restart: always
+  nginx:
+    image: nginx
+    container_name: nginx
+    networks:
+      - wblankenship
+    restart: always
+    volumes:
+      - ./nginx/dockerico.conf:/etc/nginx/conf.d/dockerico.conf:ro
+      - ./nginx/wblankenship.conf:/etc/nginx/conf.d/wblankenship.conf:ro
+      - ./nginx/wblankenship:/var/www/wblankenship:ro
+      - ./logs:/var/log/nginx
+    volumes_from:
+      - dockerico
+    ports:
+      - 80:80
+networks:
+  wblankenship:
+    driver: bridge
