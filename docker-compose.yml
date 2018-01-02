@@ -14,7 +14,7 @@ services:
     networks:
       - wblankenship
     volumes:
-      -./.ssb:/root/.ssb
+      - ./.ssb:/root/.ssb
     restart: always
   nginx:
     image: nginx
