@@ -4,3 +4,6 @@
 [submodule "nginx/wblankenship"]
 	path = nginx/wblankenship
 	url = https://github.com/retrohacker/retrohacker.github.io
+[submodule "easy-ssb-pub"]
+	path = easy-ssb-pub
+	url = https://github.com/retrohacker/easy-ssb-pub

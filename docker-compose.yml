@@ -6,6 +6,16 @@ services:
     networks:
       - wblankenship
     restart: always
+  ssb:
+    build: ./easy-ssb-pub
+    container_name: ssb
+    environment:
+      HOST: "ssb.dockeri.co"
+    networks:
+      - wblankenship
+    volumes:
+      - $HOME/.ssb:/root/.ssb
+    restart: always
   nginx:
     image: nginx
     container_name: nginx
@@ -14,11 +24,11 @@ services:
     restart: always
     volumes:
       - ./nginx/dockerico.conf:/etc/nginx/conf.d/dockerico.conf:ro
-      - ./nginx/wblankenship.conf:/etc/nginx/conf.d/wblankenship.conf:ro
-      - ./nginx/wblankenship:/var/www/wblankenship:ro
+      - ./nginx/ssb.conf:/etc/nginx/conf.d/ssb.conf:ro
       - ./logs:/var/log/nginx
     volumes_from:
       - dockerico
+      - ssb
     ports:
       - 80:80
 networks:
