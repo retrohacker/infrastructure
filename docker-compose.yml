@@ -10,7 +10,7 @@ services:
     build: ./easy-ssb-pub
     container_name: ssb
     environment:
-      HOST: "ssb.dockeri.co"
+      HOST: "45.55.167.102"
     networks:
       - wblankenship
     volumes:
@@ -31,6 +31,8 @@ services:
       - ssb
     ports:
       - 80:80
+      - 8008:8008
+      - 8007:8007
 networks:
   wblankenship:
     driver: bridge
