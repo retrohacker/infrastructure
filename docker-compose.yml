@@ -10,7 +10,7 @@ services:
     build: ./easy-ssb-pub
     container_name: ssb
     environment:
-      HOST: "45.55.167.102"
+      HOST: "ssb.dockeri.co"
     networks:
       - wblankenship
     volumes:
