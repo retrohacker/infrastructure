@@ -16,6 +16,14 @@ services:
     volumes:
       - ./.ssb:/root/.ssb
     restart: always
+  nextcloud:
+    image: nextcloud
+    container_name: nextcloud
+    networks:
+      - wblankenship
+    restart: always
+    volumes:
+      - ./nextcloud/data:/var/www/html
   nginx:
     image: nginx
     container_name: nginx
@@ -25,9 +33,11 @@ services:
     volumes:
       - ./nginx/dockerico.conf:/etc/nginx/conf.d/dockerico.conf:ro
       - ./nginx/ssb.conf:/etc/nginx/conf.d/ssb.conf:ro
+      - ./nginx/nextcloud.conf:/etc/nginx/conf.d/nextcloud.conf:ro
       - ./logs:/var/log/nginx
     volumes_from:
       - dockerico
+      - nextcloud
       - ssb
     ports:
       - 80:80
