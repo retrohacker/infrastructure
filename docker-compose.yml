@@ -16,7 +16,7 @@ services:
       - ./nginx/dockerico.conf:/etc/nginx/conf.d/dockerico.conf:ro
       - ./nginx/wblankenship.conf:/etc/nginx/conf.d/wblankenship.conf:ro
       - ./logs:/var/log/nginx
-      - ./nginx/wblankenship:/var/www/wblankenship:ro
+      - ./nginx/wblankenship/_site:/var/www/wblankenship:ro
     volumes_from:
       - dockerico
     ports:
